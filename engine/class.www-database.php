@@ -599,7 +599,10 @@ class WWW_Database {
 	 * @return string
 	 */
 	public function dbQuote($value,$type='escape',$stripQuotes=false){
-	
+		
+		if($this->connected!=1){
+			$this->dbConnect();
+		}
 		// Filtering is done based on filter type
 		switch($type){
 			case 'escape':
